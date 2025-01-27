@@ -134,7 +134,7 @@
     "href": "Trucs et astuces en R.html#conseils-divers",
     "title": "Trucs et astuces en R",
     "section": "3.4 Conseils divers",
-    "text": "3.4 Conseils divers\nIl est déconseillé de nommer des variables temporaires var, car ce nom désigne la fonction permettant de calculer une variance en R.\n\n# Exemple : variance d'un échantillon aléatoire de 1000 observations tiré d'une loi normale centrée réduite\nvar(rnorm(1000))\n\n[1] 1.015867\n\n\n\n# Le format en résultat de sapply est imprévisible\n# integer\nsapply(1L, function(x) c(x, x))\n\n     [,1]\n[1,]    1\n[2,]    1\n\n# list\nsapply(integer(), function(x) c(x, x))\n\nlist()\n\n\n\n# Le résultat de ifelse() dépend du format de la condition\n# logical\nifelse(NA, 1L, 1L)\n\n[1] NA\n\n# integer\nifelse(FALSE, 1L, 1L)\n\n[1] 1\n\n\nLa fonction if utilisée sans else renvoie NULL si la condition est FALSE. Ceci permet d’écrire de façon élégante des conditions simples. Par exemple, prendre en compte un s final à un nom seulement si la valeur est strictement supérieure à 1 :\n\nNombreDeLignes &lt;- function(baseDeDonnees) {\n  ligne &lt;- nrow(baseDeDonnees)\n  paste0(ligne, \" ligne\", if (ligne &gt; 1) \"s\")\n}\nNombreDeLignes(mtcars)\n\n[1] \"32 lignes\"\n\nNombreDeLignes(mtcars[1,])\n\n[1] \"1 ligne\"\n\n\nPré-allouer un vecteur de dimension 5 :\n\nx &lt;- rep(NA, 5)",
+    "text": "3.4 Conseils divers\nIl est déconseillé de nommer des variables temporaires var, car ce nom désigne la fonction permettant de calculer une variance en R.\n\n# Exemple : variance d'un échantillon aléatoire de 1000 observations tiré d'une loi normale centrée réduite\nvar(rnorm(1000))\n\n[1] 1.004898\n\n\n\n# Le format en résultat de sapply est imprévisible\n# integer\nsapply(1L, function(x) c(x, x))\n\n     [,1]\n[1,]    1\n[2,]    1\n\n# list\nsapply(integer(), function(x) c(x, x))\n\nlist()\n\n\n\n# Le résultat de ifelse() dépend du format de la condition\n# logical\nifelse(NA, 1L, 1L)\n\n[1] NA\n\n# integer\nifelse(FALSE, 1L, 1L)\n\n[1] 1\n\n\nLa fonction if utilisée sans else renvoie NULL si la condition est FALSE. Ceci permet d’écrire de façon élégante des conditions simples. Par exemple, prendre en compte un s final à un nom seulement si la valeur est strictement supérieure à 1 :\n\nNombreDeLignes &lt;- function(baseDeDonnees) {\n  ligne &lt;- nrow(baseDeDonnees)\n  paste0(ligne, \" ligne\", if (ligne &gt; 1) \"s\")\n}\nNombreDeLignes(mtcars)\n\n[1] \"32 lignes\"\n\nNombreDeLignes(mtcars[1,])\n\n[1] \"1 ligne\"\n\n\nPré-allouer un vecteur de dimension 5 :\n\nx &lt;- rep(NA, 5)",
     "crumbs": [
       "Trucs et astuces"
     ]
@@ -154,7 +154,7 @@
     "href": "Trucs et astuces en R.html#ramasse-miettes-garbage-collector",
     "title": "Trucs et astuces en R",
     "section": "4.1 Ramasse-miettes (Garbage Collector)",
-    "text": "4.1 Ramasse-miettes (Garbage Collector)\nSi la mémoire vive de l’ordinateur est saturée, on peut essayer de la “purger” en utilisant la fonction gc() de R.\n\ngc()\n\n          used (Mb) gc trigger (Mb) max used (Mb)\nNcells  909579 48.6    1752534 93.6  1752534 93.6\nVcells 1768552 13.5   10146329 77.5  7673941 58.6",
+    "text": "4.1 Ramasse-miettes (Garbage Collector)\nSi la mémoire vive de l’ordinateur est saturée, on peut essayer de la “purger” en utilisant la fonction gc() de R.\n\ngc()\n\n          used (Mb) gc trigger (Mb) max used (Mb)\nNcells  909483 48.6    1767285 94.4  1767285 94.4\nVcells 1768389 13.5   10146329 77.5  7667972 58.6",
     "crumbs": [
       "Trucs et astuces"
     ]
